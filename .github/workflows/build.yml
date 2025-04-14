@@ -91,8 +91,8 @@ jobs:
           bash ./compile.sh
           
           cp dist-insertTools/insert2html.js dist-insertTools/insert2html.cjs
-          node "dist-insertTools/insert2html.cjs" "Degrees of Lewdity.html" "modList.json" "dist-BeforeSC2/BeforeSC2.js"
-
+          ls -la
+          node "dist-insertTools/insert2html.js" "Degrees of Lewdity VERSION.html" "modList.json" "dist-BeforeSC2/BeforeSC2.js"
           cp "Degrees of Lewdity.html.mod.html" ./DoLP_Modloader/
           cp "modList.json" ./DoLP_Modloader/
           cp -r -f ./mod/* ./DoLP_Modloader/mod/
