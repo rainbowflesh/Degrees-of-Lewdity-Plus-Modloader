@@ -39,7 +39,9 @@ jobs:
       - name: Build SugarCube v2
         run: |
           git clone --depth 1 https://github.com/Lyoko-Jeremie/sugarcube-2_Vrelnir sugarcube-2_Vrelnir
-          npm i --prefix ./sugarcube-2_Vrelnir
+          cd sugarcube-2_Vrelnir
+          npm i 
+          cd ..
           node sugarcube-2_Vrelnir/build.js -d -u -b 2
           cp -f sugarcube-2_Vrelnir/dist/format.js degrees-of-lewdity-plus/devTools/tweego/storyFormats/sugarcube-2/
 
