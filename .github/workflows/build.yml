@@ -37,14 +37,14 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache-dependency-path: degrees-of-lewdity-plus
 
-      - name: Build SugarCube v2
-        run: |
-          git clone --depth 1 https://github.com/Lyoko-Jeremie/sugarcube-2_Vrelnir sugarcube-2_Vrelnir
-          cd sugarcube-2_Vrelnir
-          npm i 
-          node build.js -d -u -b 2
-          cd ..
-          cp -f sugarcube-2_Vrelnir/dist/format.js degrees-of-lewdity-plus/devTools/tweego/storyFormats/sugarcube-2/
+      # - name: Build SugarCube v2
+      #   run: |
+      #     git clone --depth 1 https://github.com/Lyoko-Jeremie/sugarcube-2_Vrelnir sugarcube-2_Vrelnir
+      #     cd sugarcube-2_Vrelnir
+      #     npm i 
+      #     node build.js -d -u -b 2
+      #     cd ..
+          # cp -f sugarcube-2_Vrelnir/dist/format.js degrees-of-lewdity-plus/devTools/tweego/storyFormats/sugarcube-2/
 
       - name: Download modloader
         run: |
@@ -69,6 +69,8 @@ jobs:
 
       - name: Compile and package modloader
         run: |
+          ls -la ./twine2/sugarcube-2/format.js
+          cp -f ./twine2/sugarcube-2/format.js degrees-of-lewdity-plus/devTools/tweego/storyFormats/sugarcube-2/
           cd degrees-of-lewdity-plus
           VERSION=$(cat ./version)
           mkdir -p DoLP_Modloader/img/
