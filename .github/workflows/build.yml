@@ -1,11 +1,14 @@
 name: Inject modloader and build DolP variants
+
 on:
   push:
     branches: ["main"]
   pull_request:
     branches: ["main"]
+
 env:
   NODE_OPTIONS: "--max-old-space-size=4096"
+
 jobs:
   compilation:
     env:
@@ -14,8 +17,6 @@ jobs:
     strategy:
       matrix:
         node-version: [16.x]
-    outputs:
-      version: ${{ steps.set-version.outputs.version }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -63,9 +64,9 @@ jobs:
           curl -L -H "Authorization: token $GH_TOKEN" \
             -o modloader.zip \
             "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/actions/artifacts/$ARTIFACT_ID/zip"
-          unzip -q modloader.zip -d ./modloader
+          unzip -oq modloader.zip -d ./modloader
           cp ./modloader/dist-insertTools/insert2html.js ./modloader/dist-insertTools/insert2html.cjs
-       
+
       - name: Compile and package modloader
         run: |
           cd degrees-of-lewdity-plus
@@ -81,8 +82,10 @@ jobs:
           cp -r -f ./imagepacks/vanilla/* ./DoLP_Modloader/img/
           cp -r -f ./imagepacks/dolp/* ./DoLP_Modloader/img/
 
-          zip -r -q "../../DoLP_Modloader_${VERSION}.zip" ./DoLP_Modloader/
-          
+          ZIP_NAME="../DoLP_Modloader_${VERSION}.zip"
+          zip -r -q "$ZIP_NAME" ./DoLP_Modloader/
+          echo "ZIP_NAME=$ZIP_NAME" >> $GITHUB_ENV
+
       - name: Upload artifact for next job
         uses: actions/upload-artifact@v4
         with:
@@ -106,12 +109,12 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
-          tag_name: ${{ needs.compilation.outputs.version }}
-          name: DoLP Modloader Release ${{ needs.compilation.outputs.version }}
+          tag_name: manual-release-${{ github.run_number }}
+          name: DoLP Modloader Release ${{ github.run_number }}
           files: DoLP_Modloader_*.zip
           body: "Auto-release for commit ${{ github.sha }}"
 
       - name: Cleanup
         run: |
           rm -rf DoLP_Modloader*
-          echo "Finished creating releases."
+          echo "Finished creating release."
