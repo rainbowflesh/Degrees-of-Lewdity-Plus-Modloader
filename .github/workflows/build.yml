@@ -89,7 +89,7 @@ jobs:
           mkdir -p DoLP_Modloader/mod/
 
           bash ./compile.sh
-          node "dist-modloader/insert2html.js" "Degrees of Lewdity.html" "modList.json" "dist-BeforeSC2/BeforeSC2.js"
+          node "dist-insertTools/insert2html.js" "Degrees of Lewdity.html" "modList.json" "dist-BeforeSC2/BeforeSC2.js"
 
           cp "Degrees of Lewdity.html.mod.html" ./DoLP_Modloader/
           cp "modList.json" ./DoLP_Modloader/
