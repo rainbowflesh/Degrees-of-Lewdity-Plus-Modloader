@@ -35,7 +35,7 @@ jobs:
         with:
           cache: "npm"
           node-version: ${{ matrix.node-version }}
-          working-directory: degrees-of-lewdity-plus
+          cache-dependency-path: degrees-of-lewdity-plus
 
       - name: Generate version
         id: set-version
