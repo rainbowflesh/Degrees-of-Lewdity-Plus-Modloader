@@ -64,33 +64,16 @@ jobs:
             -o modloader.zip \
             "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/actions/artifacts/$ARTIFACT_ID/zip"
           unzip modloader.zip -d ./modloader
-          ls -la
-
-      - name: Generate version
-        id: set-version
-        run: |
-          VERSION="v0.${{ github.run_id }}"
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-          echo "Using version: $VERSION"
-
-      - name: Replace version strings
-        run: |
-          VERSION="${{ steps.set-version.outputs.version }}"
-          find ./degrees-of-lewdity-plus/version -type f -exec sed -i "s/DoLP version/DoLP $VERSION/g" {} +
-          find ./degrees-of-lewdity-plus/devTools/androidsdk/image/cordova/config.xml -type f -exec sed -i "s/DoLP version/DoLP $VERSION/g" {} +
-          find ./degrees-of-lewdity-plus/devTools/apkbuilder/config.xml -type f -exec sed -i "s/DoLP version/DoLP $VERSION/g" {} +
-          find ./degrees-of-lewdity-plus/game/01-config/sugarcubeConfig.js -type f -exec sed -i "s/DoLP version/DoLP $VERSION/g" {} +
-
+          cp ./modloader/dist-insertTools/insert2html.js ./modloader/dist-insertTools/insert2html.cjs
+       
       - name: Compile and package modloader
         run: |
-          VERSION="${{ steps.set-version.outputs.version }}"
           cd degrees-of-lewdity-plus
+          VERSION=$(cat ./version)
           mkdir -p DoLP_Modloader/img/
           mkdir -p DoLP_Modloader/mod/
           bash ./compile.sh
-          
-          cp dist-insertTools/insert2html.js dist-insertTools/insert2html.cjs
-          node "modloader/dist-insertTools/insert2html.cjs" "degrees-of-lewdity-plus/Degrees of Lewdity.html" "modloader/modList.json" "modloader/dist-BeforeSC2/BeforeSC2.js"
+          node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../modloader/dist-BeforeSC2/BeforeSC2.js"
           
           cp "Degrees of Lewdity.html.mod.html" ./DoLP_Modloader/
           cp "modList.json" ./DoLP_Modloader/
