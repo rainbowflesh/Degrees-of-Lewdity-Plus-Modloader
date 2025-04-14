@@ -83,7 +83,7 @@ jobs:
           mkdir -p DoLP_Modloader/img/
           mkdir -p DoLP_Modloader/mod/
 
-          sh ./compile.sh
+          bash ./compile.sh
           node "dist-insertTools/insert2html.cjs" "Degrees of Lewdity.html" "modList.json" "dist-BeforeSC2/BeforeSC2.js"
 
           cp "Degrees of Lewdity.html.mod.html" ./DoLP_Modloader/
