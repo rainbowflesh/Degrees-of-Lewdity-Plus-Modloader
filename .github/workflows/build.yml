@@ -81,7 +81,12 @@ jobs:
           cp -r -f ./imagepacks/vanilla/* ./DoLP_Modloader/img/
           cp -r -f ./imagepacks/dolp/* ./DoLP_Modloader/img/
 
-          zip -r ../DoLP_Modloader_${VERSION}.zip ./DoLP_Modloader/
+          zip -r ../../DoLP_Modloader_${VERSION}.zip ./DoLP_Modloader/
+          ls -la
+          pwd
+          cd ../..
+          ls -la
+          pwd
 
       - name: Upload artifact for next job
         uses: actions/upload-artifact@v4
