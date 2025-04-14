@@ -87,12 +87,11 @@ jobs:
           cd degrees-of-lewdity-plus
           mkdir -p DoLP_Modloader/img/
           mkdir -p DoLP_Modloader/mod/
-          
           bash ./compile.sh
           
           cp dist-insertTools/insert2html.js dist-insertTools/insert2html.cjs
-          ls -la
-          node "dist-insertTools/insert2html.js" "Degrees of Lewdity VERSION.html" "modList.json" "dist-BeforeSC2/BeforeSC2.js"
+          node "dist-insertTools/insert2html.cjs" "Degrees of Lewdity.html" "modList.json" "dist-BeforeSC2/BeforeSC2.js"
+          
           cp "Degrees of Lewdity.html.mod.html" ./DoLP_Modloader/
           cp "modList.json" ./DoLP_Modloader/
           cp -r -f ./mod/* ./DoLP_Modloader/mod/
