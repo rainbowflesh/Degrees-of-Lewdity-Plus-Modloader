@@ -1,16 +1,15 @@
 name: Inject modloader and build DolP variants
-
 on:
   push:
     branches: ["main"]
   pull_request:
     branches: ["main"]
-
 env:
   NODE_OPTIONS: "--max-old-space-size=4096"
-
 jobs:
   compilation:
+    env:
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -37,21 +36,18 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache-dependency-path: degrees-of-lewdity-plus
 
-      - name: Generate version
-        id: set-version
+      - name: Build SugarCube v2
         run: |
-          VERSION="v0.${{ github.run_id }}"
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-          echo "Using version: $VERSION"
+          git clone --depth 1 https://github.com/Lyoko-Jeremie/sugarcube-2_Vrelnir sugarcube-2_Vrelnir
+          node sugarcube-2_Vrelnir/build.js -d -u -b 2
+          cp -f sugarcube-2_Vrelnir/dist/format.js degrees-of-lewdity-plus/devTools/tweego/storyFormats/sugarcube-2/
 
-      - name: Download insertTools artifact
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      - name: Download modloader
         run: |
           REPO_OWNER="Lyoko-Jeremie"
           REPO_NAME="sugarcube-2-ModLoader"
           WORKFLOW_NAME="Build-ModLoader-Package.yml"
-          ARTIFACT_NAME="insertTools"
+          ARTIFACT_NAME="ModLoader Package"
 
           RUN_ID=$(curl -s -H "Authorization: token $GH_TOKEN" \
             "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/actions/workflows/$WORKFLOW_NAME/runs?status=success&per_page=1" \
@@ -62,11 +58,17 @@ jobs:
             | jq -r ".artifacts[] | select(.name==\"$ARTIFACT_NAME\") | .id")
 
           curl -L -H "Authorization: token $GH_TOKEN" \
-            -o insertTools.zip \
+            -o modloader.zip \
             "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/actions/artifacts/$ARTIFACT_ID/zip"
 
-          unzip -o insertTools.zip -d degrees-of-lewdity-plus/dist-insertTools/
-          ls -la ./degrees-of-lewdity-plus/dist-insertTools
+          unzip -o modloader.zip -d degrees-of-lewdity-plus/
+
+      - name: Generate version
+        id: set-version
+        run: |
+          VERSION="v0.${{ github.run_id }}"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Using version: $VERSION"
 
       - name: Replace version strings
         run: |
@@ -84,7 +86,7 @@ jobs:
           mkdir -p DoLP_Modloader/mod/
 
           bash ./compile.sh
-          node "dist-insertTools/insert2html.cjs" "Degrees of Lewdity.html" "modList.json" "dist-BeforeSC2/BeforeSC2.js"
+          node "dist-modloader/insert2html.js" "Degrees of Lewdity.html" "modList.json" "dist-BeforeSC2/BeforeSC2.js"
 
           cp "Degrees of Lewdity.html.mod.html" ./DoLP_Modloader/
           cp "modList.json" ./DoLP_Modloader/
@@ -104,7 +106,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: compilation
     if: github.ref == 'refs/heads/main'
-    
+    permissions:
+      contents: write
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v4
@@ -116,8 +119,6 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
-          repo_token: "${{ secrets.GH_TOKEN }}"
-          automatic_release_tag: "latest"
           tag_name: ${{ needs.compilation.outputs.version }}
           name: DoLP Modloader Release ${{ needs.compilation.outputs.version }}
           files: DoLP_Modloader_*.zip
