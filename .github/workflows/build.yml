@@ -63,8 +63,8 @@ jobs:
           curl -L -H "Authorization: token $GH_TOKEN" \
             -o modloader.zip \
             "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/actions/artifacts/$ARTIFACT_ID/zip"
-
-          unzip -o modloader.zip -d degrees-of-lewdity-plus/
+          unzip modloader.zip -d ./modloader
+          ls -la
 
       - name: Generate version
         id: set-version
@@ -90,7 +90,7 @@ jobs:
           bash ./compile.sh
           
           cp dist-insertTools/insert2html.js dist-insertTools/insert2html.cjs
-          node "dist-insertTools/insert2html.cjs" "Degrees of Lewdity.html" "modList.json" "dist-BeforeSC2/BeforeSC2.js"
+          node "modloader/dist-insertTools/insert2html.cjs" "degrees-of-lewdity-plus/Degrees of Lewdity.html" "modloader/modList.json" "modloader/dist-BeforeSC2/BeforeSC2.js"
           
           cp "Degrees of Lewdity.html.mod.html" ./DoLP_Modloader/
           cp "modList.json" ./DoLP_Modloader/
