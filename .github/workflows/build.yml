@@ -100,10 +100,12 @@ jobs:
           name: dolp-modloader-package
           path: DoLP_Modloader_*.zip
 
-  upload:
+  create-release:
     runs-on: ubuntu-latest
     needs: compilation
     if: github.ref == 'refs/heads/main'
+    env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v4
