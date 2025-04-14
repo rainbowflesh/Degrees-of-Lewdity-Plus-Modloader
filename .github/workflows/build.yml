@@ -63,7 +63,7 @@ jobs:
           curl -L -H "Authorization: token $GH_TOKEN" \
             -o modloader.zip \
             "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/actions/artifacts/$ARTIFACT_ID/zip"
-          unzip modloader.zip -d ./modloader
+          unzip -q modloader.zip -d ./modloader
           cp ./modloader/dist-insertTools/insert2html.js ./modloader/dist-insertTools/insert2html.cjs
        
       - name: Compile and package modloader
@@ -81,13 +81,8 @@ jobs:
           cp -r -f ./imagepacks/vanilla/* ./DoLP_Modloader/img/
           cp -r -f ./imagepacks/dolp/* ./DoLP_Modloader/img/
 
-          zip -r ../../DoLP_Modloader_${VERSION}.zip ./DoLP_Modloader/
-          ls -la
-          pwd
-          cd ../..
-          ls -la
-          pwd
-
+          zip -r -q "../../DoLP_Modloader_${VERSION}.zip" ./DoLP_Modloader/
+          
       - name: Upload artifact for next job
         uses: actions/upload-artifact@v4
         with:
