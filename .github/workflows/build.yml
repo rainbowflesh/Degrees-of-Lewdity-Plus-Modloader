@@ -21,12 +21,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          cache: "npm"
-          node-version: ${{ matrix.node-version }}
-
       - name: Install dependencies
         run: |
           sudo apt-get update
@@ -34,7 +28,14 @@ jobs:
 
       - name: Get DolP source
         run: |
-          git clone --depth 1 https://gitgud.io/Frostberg/degrees-of-lewdity-plus/ temp-src
+          git clone --depth 1 https://gitgud.io/Frostberg/degrees-of-lewdity-plus/ degrees-of-lewdity-plus
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          cache: "npm"
+          node-version: ${{ matrix.node-version }}
+          working-directory: degrees-of-lewdity-plus
 
       - name: Generate version
         id: set-version
@@ -64,20 +65,22 @@ jobs:
             -o insertTools.zip \
             "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/actions/artifacts/$ARTIFACT_ID/zip"
 
-          unzip -o insertTools.zip -d temp-src/dist-insertTools/
+          unzip -o insertTools.zip -d degrees-of-lewdity-plus/dist-insertTools/
+          ls ./degrees-of-lewdity-plus
+          ls -la ./dist-insertTools
 
       - name: Replace version strings
         run: |
           VERSION="${{ steps.set-version.outputs.version }}"
-          find ./temp-src/version -type f -exec sed -i "s/DoLP version/DoLP $VERSION/g" {} +
-          find ./temp-src/devTools/androidsdk/image/cordova/config.xml -type f -exec sed -i "s/DoLP version/DoLP $VERSION/g" {} +
-          find ./temp-src/devTools/apkbuilder/config.xml -type f -exec sed -i "s/DoLP version/DoLP $VERSION/g" {} +
-          find ./temp-src/game/01-config/sugarcubeConfig.js -type f -exec sed -i "s/DoLP version/DoLP $VERSION/g" {} +
+          find ./degrees-of-lewdity-plus/version -type f -exec sed -i "s/DoLP version/DoLP $VERSION/g" {} +
+          find ./degrees-of-lewdity-plus/devTools/androidsdk/image/cordova/config.xml -type f -exec sed -i "s/DoLP version/DoLP $VERSION/g" {} +
+          find ./degrees-of-lewdity-plus/devTools/apkbuilder/config.xml -type f -exec sed -i "s/DoLP version/DoLP $VERSION/g" {} +
+          find ./degrees-of-lewdity-plus/game/01-config/sugarcubeConfig.js -type f -exec sed -i "s/DoLP version/DoLP $VERSION/g" {} +
 
       - name: Compile and package modloader
         run: |
           VERSION="${{ steps.set-version.outputs.version }}"
-          cd temp-src
+          cd degrees-of-lewdity-plus
           mkdir -p DoLP_Modloader/img/
           mkdir -p DoLP_Modloader/mod/
 
