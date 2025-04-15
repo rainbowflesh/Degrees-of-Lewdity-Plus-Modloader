@@ -425,29 +425,29 @@ jobs:
           body: |
             Auto-release for commit ${{ github.sha }}
             Includes:
-            - Modloader
             - BEEESSS
             - BEEESSS Hikari Female
             - BEEESSS Wax
-            - Susato
-            - MIZZ Female
-            - kitmint
             - beeesss_mysterious
-            - hikfem_mysterious
             - goose_female
             - goose_female_mysterious
+            - hikfem_mysterious
+            - kitmint
+            - MIZZ Female
+            - Modloader
+            - Susato
           files: |
-            DoLP_Modloader_*.zip
             DoLP_BEEESSS_*.zip
             DoLP_BEEESSS_*.zip
-            DoLP_BEEESSS_Wax_*.zip
-            DoLP_Susato_*.zip
-            DoLP_MIZZ_Female_*.zip
-            DoLP_kitmint_*.zip
             DoLP_beeesss_mysterious_*.zip
-            DoLP_hikfem_mysterious_*.zip
+            DoLP_BEEESSS_Wax_*.zip
             DoLP_goose_female_*.zip
             DoLP_goose_female_mysterious_*.zip
+            DoLP_hikfem_mysterious_*.zip
+            DoLP_kitmint_*.zip
+            DoLP_MIZZ_Female_*.zip
+            DoLP_Modloader_*.zip
+            DoLP_susato_*.zip
 
       - name: Cleanup
         run: |
