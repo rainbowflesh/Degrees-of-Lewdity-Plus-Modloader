@@ -89,17 +89,15 @@ jobs:
 
       - name: Compile and package BEEESSS variant
         run: |
-          pwd
-          find ./version -type f -exec sed -i "s/DoLP version/DoLP v0.${{ github.run_number }}/g" {} +
-          find ./devTools/androidsdk/image/cordova/config.xml -type f -exec sed -i "s/DoLP version/DoLP v0.${{ github.run_number }}/g" {} +
-          find ./devTools/apkbuilder/config.xml -type f -exec sed -i "s/DoLP version/DoLP v0.${{ github.run_number }}/g" {} +
-          find ./game/01-config/sugarcubeConfig.js -type f -exec sed -i "s/DoLP version/DoLP v0.${{ github.run_number }}/g" {} +
-
+          cd degrees-of-lewdity-plus
+          VERSION=$(cat version)
           mkdir -p DoLP_BEEESSS/img/
+          mkdir -p DoLP_BEEESSS/mod/
           bash ./compile.sh
           node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../modloader/dist-BeforeSC2/BeforeSC2.js"
 
           cp "Degrees of Lewdity.html" ./DoLP_BEEESSS/
+          cp -r -f ./mod/* ./DoLP_BEEESSS/mod/
           cp -r -f ./imagepacks/vanilla/* ./DoLP_BEEESSS/img/
           cp -r -f ./imagepacks/dolp/* ./DoLP_BEEESSS/img/
           cp -r -f ./imagepacks/b3s/* ./DoLP_BEEESSS/img/
@@ -111,18 +109,15 @@ jobs:
 
       - name: Compile and package BEEESSS Hikari Female
         run: |
+          cd degrees-of-lewdity-plus
           VERSION=$(cat version)
-
-          find ./version -type f -exec sed -i "s/DoLP version/DoLP v0.${{ github.run_number }}/g" {} +
-          find ./devTools/androidsdk/image/cordova/config.xml -type f -exec sed -i "s/DoLP version/DoLP v0.${{ github.run_number }}/g" {} +
-          find ./devTools/apkbuilder/config.xml -type f -exec sed -i "s/DoLP version/DoLP v0.${{ github.run_number }}/g" {} +
-          find ./game/01-config/sugarcubeConfig.js -type f -exec sed -i "s/DoLP version/DoLP v0.${{ github.run_number }}/g" {} +
-
           mkdir -p DoLP_BEEESSS_Hikari_Female/img/
+          mkdir -p DoLP_BEEESSS_Hikari_Female/mod/
           bash ./compile.sh
           node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../modloader/dist-BeforeSC2/BeforeSC2.js"
 
           cp "Degrees of Lewdity.html" ./DoLP_BEEESSS_Hikari_Female/
+          cp -r -f ./mod/* ./DoLP_BEEESSS_Hikari_Female/mod/
           cp -r -f ./imagepacks/vanilla/* ./DoLP_BEEESSS_Hikari_Female/img/
           cp -r -f ./imagepacks/dolp/* ./DoLP_BEEESSS_Hikari_Female/img/
           cp -r -f ./imagepacks/b3s/* ./DoLP_BEEESSS_Hikari_Female/img/
@@ -136,17 +131,15 @@ jobs:
 
       - name: Compile and package BEEESSS Wax
         run: |
-          VERSION="v0.${{ github.run_number }}"
-          find ./version -type f -exec sed -i "s/DoLP version/DoLP ${VERSION}/g" {} +
-          find ./devTools/androidsdk/image/cordova/config.xml -type f -exec sed -i "s/DoLP version/DoLP ${VERSION}/g" {} +
-          find ./devTools/apkbuilder/config.xml -type f -exec sed -i "s/DoLP version/DoLP ${VERSION}/g" {} +
-          find ./game/01-config/sugarcubeConfig.js -type f -exec sed -i "s/DoLP version/DoLP ${VERSION}/g" {} +
-
+          cd degrees-of-lewdity-plus
+          VERSION=$(cat version)
           mkdir -p DoLP_BEEESSS_Wax/img/
+          mkdir -p DoLP_BEEESSS_Wax/mod/
           bash ./compile.sh
           node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../modloader/dist-BeforeSC2/BeforeSC2.js"
 
           cp "Degrees of Lewdity.html" ./DoLP_BEEESSS_Wax/
+          cp -r -f ./mod/* ./DoLP_BEEESSS_Wax/mod/
           cp -r -f ./imagepacks/vanilla/* ./DoLP_BEEESSS_Wax/img/
           cp -r -f ./imagepacks/dolp/* ./DoLP_BEEESSS_Wax/img/
           cp -r -f ./imagepacks/b3s/* ./DoLP_BEEESSS_Wax/img/
@@ -159,17 +152,16 @@ jobs:
 
       - name: Compile and package beeesss_mysterious
         run: |
-          VERSION="v0.${{ github.run_number }}"
-          find ./version -type f -exec sed -i "s/DoLP version/DoLP ${VERSION}/g" {} +
-          find ./devTools/androidsdk/image/cordova/config.xml -type f -exec sed -i "s/DoLP version/DoLP ${VERSION}/g" {} +
-          find ./devTools/apkbuilder/config.xml -type f -exec sed -i "s/DoLP version/DoLP ${VERSION}/g" {} +
-          find ./game/01-config/sugarcubeConfig.js -type f -exec sed -i "s/DoLP version/DoLP ${VERSION}/g" {} +
+          cd degrees-of-lewdity-plus
+          VERSION=$(cat version)
 
+          mkdir -p DoLP_beeesss_mysterious/mod/
           mkdir -p DoLP_beeesss_mysterious/img/
           bash ./compile.sh
           node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../modloader/dist-BeforeSC2/BeforeSC2.js"
 
           cp "Degrees of Lewdity.html" ./DoLP_beeesss_mysterious/
+          cp -r -f ./mod/* ./DoLP_beeesss_mysterious/mod/
           cp -r -f ./imagepacks/vanilla/* ./DoLP_beeesss_mysterious/img/
           cp -r -f ./imagepacks/dolp/* ./DoLP_beeesss_mysterious/img/
           cp -r -f ./imagepacks/b3s/* ./DoLP_beeesss_mysterious/img/
@@ -182,17 +174,16 @@ jobs:
 
       - name: Compile and package Susato
         run: |
-          VERSION="v0.${{ github.run_number }}"
-          find ./version -type f -exec sed -i "s/DoLP version/DoLP ${VERSION}/g" {} +
-          find ./devTools/androidsdk/image/cordova/config.xml -type f -exec sed -i "s/DoLP version/DoLP ${VERSION}/g" {} +
-          find ./devTools/apkbuilder/config.xml -type f -exec sed -i "s/DoLP version/DoLP ${VERSION}/g" {} +
-          find ./game/01-config/sugarcubeConfig.js -type f -exec sed -i "s/DoLP version/DoLP ${VERSION}/g" {} +
+          cd degrees-of-lewdity-plus
+          VERSION=$(cat version)
 
           mkdir -p DoLP_susato/img/
+          mkdir -p DoLP_susato/mod/
           bash ./compile.sh
           node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../modloader/dist-BeforeSC2/BeforeSC2.js"
 
           cp "Degrees of Lewdity.html" ./DoLP_susato/
+          cp -r -f ./mod/* ./DoLP_susato/mod/
           cp -r -f ./imagepacks/vanilla/* ./DoLP_susato/img/
           cp -r -f ./imagepacks/dolp/* ./DoLP_susato/img/
           cp -r -f ./imagepacks/susato/* ./DoLP_susato/img/
@@ -202,17 +193,16 @@ jobs:
 
       - name: Compile and package MIZZ Female
         run: |
-          VERSION="v0.${{ github.run_number }}"
-          find ./version -type f -exec sed -i "s/DoLP version/DoLP ${VERSION}/g" {} +
-          find ./devTools/androidsdk/image/cordova/config.xml -type f -exec sed -i "s/DoLP version/DoLP ${VERSION}/g" {} +
-          find ./devTools/apkbuilder/config.xml -type f -exec sed -i "s/DoLP version/DoLP ${VERSION}/g" {} +
-          find ./game/01-config/sugarcubeConfig.js -type f -exec sed -i "s/DoLP version/DoLP ${VERSION}/g" {} +
+          cd degrees-of-lewdity-plus
+          VERSION=$(cat version)
 
           mkdir -p DoLP_MIZZ_Female/img/
+          mkdir -p DoLP_MIZZ_Female/mod/
           bash ./compile.sh
           node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../modloader/dist-BeforeSC2/BeforeSC2.js"
 
           cp "Degrees of Lewdity.html" ./DoLP_MIZZ_Female/
+          cp -r -f ./mod/* ./DoLP_MIZZ_Female/mod/
           cp -r -f ./imagepacks/vanilla/* ./DoLP_MIZZ_Female/img/
           cp -r -f ./imagepacks/dolp/* ./DoLP_MIZZ_Female/img/
           cp -r -f ./imagepacks/b3s/* ./DoLP_MIZZ_Female/img/
@@ -225,18 +215,17 @@ jobs:
 
       - name: Compile and package kitmint
         run: |
-          VERSION="v0.${{ github.run_number }}"
-          find ./version -type f -exec sed -i "s/DoLP version/DoLP ${VERSION}/g" {} +
-          find ./devTools/androidsdk/image/cordova/config.xml -type f -exec sed -i "s/DoLP version/DoLP ${VERSION}/g" {} +
-          find ./devTools/apkbuilder/config.xml -type f -exec sed -i "s/DoLP version/DoLP ${VERSION}/g" {} +
-          find ./game/01-config/sugarcubeConfig.js -type f -exec sed -i "s/DoLP version/DoLP ${VERSION}/g" {} +
+          cd degrees-of-lewdity-plus
+          VERSION=$(cat version)
 
           mkdir -p DoLP_kitmint/img/
+          mkdir -p DoLP_kitmint/mod/
           cp ./imagepacks/kitmint/style.css ./
           bash ./compile.sh
           node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../modloader/dist-BeforeSC2/BeforeSC2.js"
 
           cp "Degrees of Lewdity.html" ./DoLP_kitmint/
+          cp -r -f ./mod/* ./DoLP_MIZZ_Female/mod/
           cp -r -f ./imagepacks/vanilla/* ./DoLP_kitmint/img/
           cp -r -f ./imagepacks/dolp/* ./DoLP_kitmint/img/
           cp -r -f ./imagepacks/kitmint/* ./DoLP_kitmint/img/
@@ -245,19 +234,17 @@ jobs:
           zip -r "$ZIP_NAME" ./DoLP_kitmint/
 
       - name: Compile and package hikfem_mysterious
-        env:
-          VERSION: v0.${{ github.run_number }}
         run: |
-          find ./version -type f -exec sed -i "s/DoLP version/DoLP $VERSION/g" {} +
-          find ./devTools/androidsdk/image/cordova/config.xml -type f -exec sed -i "s/DoLP version/DoLP $VERSION/g" {} +
-          find ./devTools/apkbuilder/config.xml -type f -exec sed -i "s/DoLP version/DoLP $VERSION/g" {} +
-          find ./game/01-config/sugarcubeConfig.js -type f -exec sed -i "s/DoLP version/DoLP $VERSION/g" {} +
+          cd degrees-of-lewdity-plus
+          VERSION=$(cat version)
 
           mkdir -p DoLP_hikfem_mysterious/img/
+          mkdir -p DoLP_hikfem_mysterious/mod/
           bash ./compile.sh
           node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../modloader/dist-BeforeSC2/BeforeSC2.js"
 
           cp "Degrees of Lewdity.html" ./DoLP_hikfem_mysterious/
+          cp -r -f ./mod/* ./DoLP_hikfem_mysterious/mod/
           cp -r -f ./imagepacks/vanilla/* ./DoLP_hikfem_mysterious/img/
           cp -r -f ./imagepacks/dolp/* ./DoLP_hikfem_mysterious/img/
           cp -r -f ./imagepacks/b3s/* ./DoLP_hikfem_mysterious/img/
@@ -271,19 +258,16 @@ jobs:
           zip -r "$ZIP_NAME" ./DoLP_hikfem_mysterious/
 
       - name: Compile and package goose_female
-        env:
-          VERSION: v0.${{ github.run_number }}
         run: |
-          find ./version -type f -exec sed -i "s/DoLP version/DoLP $VERSION/g" {} +
-          find ./devTools/androidsdk/image/cordova/config.xml -type f -exec sed -i "s/DoLP version/DoLP $VERSION/g" {} +
-          find ./devTools/apkbuilder/config.xml -type f -exec sed -i "s/DoLP version/DoLP $VERSION/g" {} +
-          find ./game/01-config/sugarcubeConfig.js -type f -exec sed -i "s/DoLP version/DoLP $VERSION/g" {} +
-
+          cd degrees-of-lewdity-plus
+          VERSION=$(cat version)
           mkdir -p DoLP_goose_female/img/
+          mkdir -p DoLP_goose_female/mod/
           bash ./compile.sh
           node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../modloader/dist-BeforeSC2/BeforeSC2.js"
 
           cp "Degrees of Lewdity.html" ./DoLP_goose_female/
+          cp -r -f ./mod/* ./DoLP_goose_female/mod/
           cp -r -f ./imagepacks/vanilla/* ./DoLP_goose_female/img/
           cp -r -f ./imagepacks/dolp/* ./DoLP_goose_female/img/
           cp -r -f ./imagepacks/goosefem/* ./DoLP_goose_female/img/
@@ -293,19 +277,17 @@ jobs:
           zip -r "$ZIP_NAME" ./DoLP_goose_female/
 
       - name: Compile and package goose_female_mysterious
-        env:
-          VERSION: v0.${{ github.run_number }}
         run: |
-          find ./version -type f -exec sed -i "s/DoLP version/DoLP $VERSION/g" {} +
-          find ./devTools/androidsdk/image/cordova/config.xml -type f -exec sed -i "s/DoLP version/DoLP $VERSION/g" {} +
-          find ./devTools/apkbuilder/config.xml -type f -exec sed -i "s/DoLP version/DoLP $VERSION/g" {} +
-          find ./game/01-config/sugarcubeConfig.js -type f -exec sed -i "s/DoLP version/DoLP $VERSION/g" {} +
+          cd degrees-of-lewdity-plus
+          VERSION=$(cat version)
 
           mkdir -p DoLP_goose_female_mysterious/img/
+          mkdir -p DoLP_goose_female_mysterious/mod/
           bash ./compile.sh
           node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../modloader/dist-BeforeSC2/BeforeSC2.js"
 
           cp "Degrees of Lewdity.html" ./DoLP_goose_female_mysterious/
+          cp -r -f ./mod/* ./DoLP_goose_female_mysterious/mod/
           cp -r -f ./imagepacks/vanilla/* ./DoLP_goose_female_mysterious/img/
           cp -r -f ./imagepacks/dolp/* ./DoLP_goose_female_mysterious/img/
           cp -r -f ./imagepacks/goosefem/* ./DoLP_goose_female_mysterious/img/
