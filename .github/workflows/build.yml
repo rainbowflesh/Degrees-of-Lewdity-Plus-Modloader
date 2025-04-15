@@ -64,11 +64,13 @@ jobs:
           unzip -oq modloader.zip -d ./modloader
           cp ./modloader/dist-insertTools/insert2html.js ./modloader/dist-insertTools/insert2html.cjs
           cp -f ./twine2/sugarcube-2/format.js degrees-of-lewdity-plus/devTools/tweego/storyFormats/sugarcube-2/
-          cd degrees-of-lewdity-plus
+          cat ./twine2/sugarcube-2/format.js
+          cat degrees-of-lewdity-plus/devTools/tweego/storyFormats/sugarcube-2/
 
       # compiles
       - name: Compile and package modloader
         run: |
+          cd degrees-of-lewdity-plus
           VERSION=$(cat ./version)
           mkdir -p DoLP_Modloader/img/
           mkdir -p DoLP_Modloader/mod/
@@ -87,6 +89,7 @@ jobs:
 
       - name: Compile and package BEEESSS variant
         run: |
+          pwd
           find ./version -type f -exec sed -i "s/DoLP version/DoLP v0.${{ github.run_number }}/g" {} +
           find ./devTools/androidsdk/image/cordova/config.xml -type f -exec sed -i "s/DoLP version/DoLP v0.${{ github.run_number }}/g" {} +
           find ./devTools/apkbuilder/config.xml -type f -exec sed -i "s/DoLP version/DoLP v0.${{ github.run_number }}/g" {} +
