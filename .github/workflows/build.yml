@@ -338,6 +338,10 @@ jobs:
           path: DoLP_BEEESSS_Wax_v0.${{ github.run_number }}.zip
 
       - name: Upload beeesss_mysterious artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dolp-beeesss-mysterious-package
+          path: DoLP_beeesss_mysterious_v0.${{ github.run_number }}.zip
 
       - name: Upload Susato artifact
         uses: actions/upload-artifact@v4
@@ -352,10 +356,6 @@ jobs:
           path: DoLP_MIZZ_Female_v0.${{ github.run_number }}.zip
 
       - name: Upload kitmint artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: dolp-beeesss-mysterious-package
-          path: DoLP_beeesss_mysterious_v0.${{ github.run_number }}.zip
         uses: actions/upload-artifact@v4
         with:
           name: dolp-kitmint-package
