@@ -272,7 +272,7 @@ jobs:
           cp -r -f ./imagepacks/goosefem/* ./DoLP_goose_female/img/
           cp -r -f ./imagepacks/goosefemsubs/* ./DoLP_goose_female/img/
 
-          ZIP_NAME="../DoLP_goose_female_${VERSION}.zip"
+          ZIP_NAME="../DoLP_goose_female_v${VERSION}.zip"
           zip -r -q "$ZIP_NAME" ./DoLP_goose_female/
 
       - name: Compile and package goose_female_mysterious
@@ -441,7 +441,7 @@ jobs:
             DoLP_BEEESSS_Hikari_Female_*.zip
             DoLP_BEEESSS_Wax_*.zip
             DoLP_beeesss_mysterious_*.zip
-            DoLP_goose_female_*.zip
+            DoLP_goose_female_v*.zip
             DoLP_goose_female_mysterious_*.zip
             DoLP_hikfem_mysterious_*.zip
             DoLP_kitmint_*.zip
