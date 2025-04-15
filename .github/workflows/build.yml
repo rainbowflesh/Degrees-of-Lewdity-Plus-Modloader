@@ -373,7 +373,18 @@ jobs:
       - name: Download all artifacts
         uses: actions/download-artifact@v4
         with:
-          path: .
+          name: |
+            dolp-modloader-package,
+            dolp-beeesss-package,
+            dolp-beeesss-hikari-female-package,
+            dolp-beeesss-wax-package,
+            dolp-beeesss-mysterious-package,
+            dolp-susato-package,
+            dolp-mizz-female-package,
+            dolp-kitmint-package,
+            dolp-hikfem-mysterious-package,
+            dolp-goose-female-package,
+            dolp-goose-female-mysterious-package
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
