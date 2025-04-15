@@ -297,26 +297,26 @@ jobs:
           ZIP_NAME="DoLP_goose_female_mysterious_${VERSION}.zip"
           zip -r -q "$ZIP_NAME" ./DoLP_goose_female_mysterious/
           cd ..
-          ls
+          ls degrees-of-lewdity-plus/
 
       # create artifacts
       - name: Upload Modloader artifact
         uses: actions/upload-artifact@v4
         with:
           name: dolp-modloader-package
-          path: DoLP_Modloader*.zip
+          path: degrees-of-lewdity-plus/DoLP_Modloader*.zip
 
       - name: Upload BEEESSS artifact
         uses: actions/upload-artifact@v4
         with:
           name: dolp-beeesss-package
-          path: DoLP_BEEESSS*.zip
+          path: degrees-of-lewdity-plus/DoLP_BEEESSS*.zip
 
       - name: Upload BEEESSS Hikari Female artifact
         uses: actions/upload-artifact@v4
         with:
           name: dolp-beeesss-hikari-female-package
-          path: DoLP_BEEESSS_Hikari_Female*.zip
+          path: degrees-of-lewdity-plus/DoLP_BEEESSS_Hikari_Female*.zip
 
       - name: Upload BEEESSS Wax artifact
         uses: actions/upload-artifact@v4
