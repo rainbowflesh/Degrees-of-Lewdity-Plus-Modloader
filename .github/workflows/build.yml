@@ -370,21 +370,50 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Download all artifacts
+      - name: Download Modloader artifact
         uses: actions/download-artifact@v4
         with:
-          name: |
-            dolp-modloader-package,
-            dolp-beeesss-package,
-            dolp-beeesss-hikari-female-package,
-            dolp-beeesss-wax-package,
-            dolp-beeesss-mysterious-package,
-            dolp-susato-package,
-            dolp-mizz-female-package,
-            dolp-kitmint-package,
-            dolp-hikfem-mysterious-package,
-            dolp-goose-female-package,
-            dolp-goose-female-mysterious-package
+          name: dolp-modloader-package
+      - name: Download BEEESSS artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dolp-beeesss-package
+      - name: Download BEEESSS Hikari Female artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dolp-beeesss-hikari-female-package
+      - name: Download BEEESSS Wax artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dolp-beeesss-wax-package
+      - name: Download beeesss_mysterious artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dolp-beeesss-mysterious-package
+      - name: Download Susato artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dolp-susato-package
+      - name: Download MIZZ Female artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dolp-mizz-female-package
+      - name: Download kitmint artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dolp-kitmint-package
+      - name: Download hikfem_mysterious artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dolp-hikfem-mysterious-package
+      - name: Download goose_female artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dolp-goose-female-package
+      - name: Download goose_female_mysterious artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dolp-goose-female-mysterious-package
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
