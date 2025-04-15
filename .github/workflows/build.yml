@@ -121,8 +121,8 @@ jobs:
           cp -r -f ./imagepacks/b3s/* ./DoLP_BEEESSS_Hikari_Female/img/
           cp -r -f ./imagepacks/kaervek/* ./DoLP_BEEESSS_Hikari_Female/img/
           cp -r -f ./imagepacks/dolp_b3s/* ./DoLP_BEEESSS_Hikari_Female/img/
-          cp -r -f ./imagepacks/b3s_Hikfem/* ./DoLP_BEEESSS_Hikari_Female/img/
-          cp -r -f ./imagepacks/b3s_Hikfemsubs/* ./DoLP_BEEESSS_Hikari_Female/img/
+          cp -r -f ./imagepacks/b3s_hikfem/* ./DoLP_BEEESSS_Hikari_Female/img/
+          cp -r -f ./imagepacks/b3s_hikfemsubs/* ./DoLP_BEEESSS_Hikari_Female/img/
 
           ZIP_NAME="../DoLP_BEEESSS_Hikari_Female_${VERSION}.zip"
           zip -r -q "$ZIP_NAME" ./DoLP_BEEESSS_Hikari_Female/
@@ -148,27 +148,27 @@ jobs:
           ZIP_NAME="../DoLP_BEEESSS_Wax_${VERSION}.zip"
           zip -r -q "$ZIP_NAME" ./DoLP_BEEESSS_Wax/
 
-      - name: Compile and package BEEESSS_mysterious
+      - name: Compile and package beeesss_mysterious
         run: |
           cd degrees-of-lewdity-plus
           VERSION=$(cat version)
 
-          mkdir -p DoLP_BEEESSS_mysterious/mod/
-          mkdir -p DoLP_BEEESSS_mysterious/img/
+          mkdir -p DoLP_beeesss_mysterious/mod/
+          mkdir -p DoLP_beeesss_mysterious/img/
           bash ./compile.sh
           node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../modloader/dist-BeforeSC2/BeforeSC2.js"
 
-          cp "Degrees of Lewdity.html.mod.html" ./DoLP_BEEESSS_mysterious/
-          cp -r -f ./mod/* ./DoLP_BEEESSS_mysterious/mod/
-          cp -r -f ./imagepacks/vanilla/* ./DoLP_BEEESSS_mysterious/img/
-          cp -r -f ./imagepacks/dolp/* ./DoLP_BEEESSS_mysterious/img/
-          cp -r -f ./imagepacks/b3s/* ./DoLP_BEEESSS_mysterious/img/
-          cp -r -f ./imagepacks/kaervek/* ./DoLP_BEEESSS_mysterious/img/
-          cp -r -f ./imagepacks/dolp_b3s/* ./DoLP_BEEESSS_mysterious/img/
-          cp -r -f ./imagepacks/mysterious/* ./DoLP_BEEESSS_mysterious/img/
+          cp "Degrees of Lewdity.html.mod.html" ./DoLP_beeesss_mysterious/
+          cp -r -f ./mod/* ./DoLP_beeesss_mysterious/mod/
+          cp -r -f ./imagepacks/vanilla/* ./DoLP_beeesss_mysterious/img/
+          cp -r -f ./imagepacks/dolp/* ./DoLP_beeesss_mysterious/img/
+          cp -r -f ./imagepacks/b3s/* ./DoLP_beeesss_mysterious/img/
+          cp -r -f ./imagepacks/kaervek/* ./DoLP_beeesss_mysterious/img/
+          cp -r -f ./imagepacks/dolp_b3s/* ./DoLP_beeesss_mysterious/img/
+          cp -r -f ./imagepacks/mysterious/* ./DoLP_beeesss_mysterious/img/
 
-          ZIP_NAME="../DoLP_BEEESSS_mysterious_${VERSION}.zip"
-          zip -r -q "$ZIP_NAME" ./DoLP_BEEESSS_mysterious/
+          ZIP_NAME="../DoLP_beeesss_mysterious_${VERSION}.zip"
+          zip -r -q "$ZIP_NAME" ./DoLP_beeesss_mysterious/
 
       - name: Compile and package Susato
         run: |
@@ -186,8 +186,9 @@ jobs:
           cp -r -f ./imagepacks/dolp/* ./DoLP_susato/img/
           cp -r -f ./imagepacks/susato/* ./DoLP_susato/img/
 
-          ZIP_NAME="../DoLP_Susato_${VERSION}.zip"
+          ZIP_NAME="../DoLP_susato_${VERSION}.zip"
           zip -r -q "$ZIP_NAME" ./DoLP_susato/
+          ls ../
 
       - name: Compile and package MIZZ Female
         run: |
@@ -211,89 +212,89 @@ jobs:
           ZIP_NAME="../DoLP_MIZZ_Female_${VERSION}.zip"
           zip -r -q "$ZIP_NAME" ./DoLP_MIZZ_Female/
 
-      - name: Compile and package Kitmint
+      - name: Compile and package kitmint
         run: |
           cd degrees-of-lewdity-plus
           VERSION=$(cat version)
 
-          mkdir -p DoLP_Kitmint/img/
-          mkdir -p DoLP_Kitmint/mod/
-          cp ./imagepacks/Kitmint/style.css ./
+          mkdir -p DoLP_kitmint/img/
+          mkdir -p DoLP_kitmint/mod/
+          cp ./imagepacks/kitmint/style.css ./
           bash ./compile.sh
           node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../modloader/dist-BeforeSC2/BeforeSC2.js"
 
-          cp "Degrees of Lewdity.html.mod.html" ./DoLP_Kitmint/
+          cp "Degrees of Lewdity.html.mod.html" ./DoLP_kitmint/
           cp -r -f ./mod/* ./DoLP_MIZZ_Female/mod/
-          cp -r -f ./imagepacks/vanilla/* ./DoLP_Kitmint/img/
-          cp -r -f ./imagepacks/dolp/* ./DoLP_Kitmint/img/
-          cp -r -f ./imagepacks/Kitmint/* ./DoLP_Kitmint/img/
+          cp -r -f ./imagepacks/vanilla/* ./DoLP_kitmint/img/
+          cp -r -f ./imagepacks/dolp/* ./DoLP_kitmint/img/
+          cp -r -f ./imagepacks/kitmint/* ./DoLP_kitmint/img/
 
-          ZIP_NAME="../DoLP_Kitmint_${VERSION}.zip"
-          zip -r -q "$ZIP_NAME" ./DoLP_Kitmint/
+          ZIP_NAME="../DoLP_kitmint_${VERSION}.zip"
+          zip -r -q "$ZIP_NAME" ./DoLP_kitmint/
 
-      - name: Compile and package Hikfem_mysterious
+      - name: Compile and package hikfem_mysterious
         run: |
           cd degrees-of-lewdity-plus
           VERSION=$(cat version)
 
-          mkdir -p DoLP_Hikfem_mysterious/img/
-          mkdir -p DoLP_Hikfem_mysterious/mod/
+          mkdir -p DoLP_hikfem_mysterious/img/
+          mkdir -p DoLP_hikfem_mysterious/mod/
           bash ./compile.sh
           node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../modloader/dist-BeforeSC2/BeforeSC2.js"
 
-          cp "Degrees of Lewdity.html.mod.html" ./DoLP_Hikfem_mysterious/
-          cp -r -f ./mod/* ./DoLP_Hikfem_mysterious/mod/
-          cp -r -f ./imagepacks/vanilla/* ./DoLP_Hikfem_mysterious/img/
-          cp -r -f ./imagepacks/dolp/* ./DoLP_Hikfem_mysterious/img/
-          cp -r -f ./imagepacks/b3s/* ./DoLP_Hikfem_mysterious/img/
-          cp -r -f ./imagepacks/kaervek/* ./DoLP_Hikfem_mysterious/img/
-          cp -r -f ./imagepacks/dolp_b3s/* ./DoLP_Hikfem_mysterious/img/
-          cp -r -f ./imagepacks/b3s_Hikfem/* ./DoLP_Hikfem_mysterious/img/
-          cp -r -f ./imagepacks/b3s_Hikfemsubs/* ./DoLP_Hikfem_mysterious/img/
-          cp -r -f ./imagepacks/mysterious/* ./DoLP_Hikfem_mysterious/img/
+          cp "Degrees of Lewdity.html.mod.html" ./DoLP_hikfem_mysterious/
+          cp -r -f ./mod/* ./DoLP_hikfem_mysterious/mod/
+          cp -r -f ./imagepacks/vanilla/* ./DoLP_hikfem_mysterious/img/
+          cp -r -f ./imagepacks/dolp/* ./DoLP_hikfem_mysterious/img/
+          cp -r -f ./imagepacks/b3s/* ./DoLP_hikfem_mysterious/img/
+          cp -r -f ./imagepacks/kaervek/* ./DoLP_hikfem_mysterious/img/
+          cp -r -f ./imagepacks/dolp_b3s/* ./DoLP_hikfem_mysterious/img/
+          cp -r -f ./imagepacks/b3s_hikfem/* ./DoLP_hikfem_mysterious/img/
+          cp -r -f ./imagepacks/b3s_hikfemsubs/* ./DoLP_hikfem_mysterious/img/
+          cp -r -f ./imagepacks/mysterious/* ./DoLP_hikfem_mysterious/img/
 
-          ZIP_NAME="../DoLP_Hikfem_mysterious_${VERSION}.zip"
-          zip -r -q "$ZIP_NAME" ./DoLP_Hikfem_mysterious/
+          ZIP_NAME="../DoLP_hikfem_mysterious_${VERSION}.zip"
+          zip -r -q "$ZIP_NAME" ./DoLP_hikfem_mysterious/
 
-      - name: Compile and package Goose_female
+      - name: Compile and package goose_female
         run: |
           cd degrees-of-lewdity-plus
           VERSION=$(cat version)
-          mkdir -p DoLP_Goose_female/img/
-          mkdir -p DoLP_Goose_female/mod/
+          mkdir -p DoLP_goose_female/img/
+          mkdir -p DoLP_goose_female/mod/
           bash ./compile.sh
           node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../modloader/dist-BeforeSC2/BeforeSC2.js"
 
-          cp "Degrees of Lewdity.html.mod.html" ./DoLP_Goose_female/
-          cp -r -f ./mod/* ./DoLP_Goose_female/mod/
-          cp -r -f ./imagepacks/vanilla/* ./DoLP_Goose_female/img/
-          cp -r -f ./imagepacks/dolp/* ./DoLP_Goose_female/img/
-          cp -r -f ./imagepacks/goosefem/* ./DoLP_Goose_female/img/
-          cp -r -f ./imagepacks/goosefemsubs/* ./DoLP_Goose_female/img/
+          cp "Degrees of Lewdity.html.mod.html" ./DoLP_goose_female/
+          cp -r -f ./mod/* ./DoLP_goose_female/mod/
+          cp -r -f ./imagepacks/vanilla/* ./DoLP_goose_female/img/
+          cp -r -f ./imagepacks/dolp/* ./DoLP_goose_female/img/
+          cp -r -f ./imagepacks/goosefem/* ./DoLP_goose_female/img/
+          cp -r -f ./imagepacks/goosefemsubs/* ./DoLP_goose_female/img/
 
-          ZIP_NAME="../DoLP_Goose_female_${VERSION}.zip"
-          zip -r -q "$ZIP_NAME" ./DoLP_Goose_female/
+          ZIP_NAME="../DoLP_goose_female_${VERSION}.zip"
+          zip -r -q "$ZIP_NAME" ./DoLP_goose_female/
 
-      - name: Compile and package Goose_female_mysterious
+      - name: Compile and package goose_female_mysterious
         run: |
           cd degrees-of-lewdity-plus
           VERSION=$(cat version)
 
-          mkdir -p DoLP_Goose_female_mysterious/img/
-          mkdir -p DoLP_Goose_female_mysterious/mod/
+          mkdir -p DoLP_goose_female_mysterious/img/
+          mkdir -p DoLP_goose_female_mysterious/mod/
           bash ./compile.sh
           node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../modloader/dist-BeforeSC2/BeforeSC2.js"
 
-          cp "Degrees of Lewdity.html.mod.html" ./DoLP_Goose_female_mysterious/
-          cp -r -f ./mod/* ./DoLP_Goose_female_mysterious/mod/
-          cp -r -f ./imagepacks/vanilla/* ./DoLP_Goose_female_mysterious/img/
-          cp -r -f ./imagepacks/dolp/* ./DoLP_Goose_female_mysterious/img/
-          cp -r -f ./imagepacks/goosefem/* ./DoLP_Goose_female_mysterious/img/
-          cp -r -f ./imagepacks/goosefemsubs/* ./DoLP_Goose_female_mysterious/img/
-          cp -r -f ./imagepacks/mysterious/* ./DoLP_Goose_female_mysterious/img/
+          cp "Degrees of Lewdity.html.mod.html" ./DoLP_goose_female_mysterious/
+          cp -r -f ./mod/* ./DoLP_goose_female_mysterious/mod/
+          cp -r -f ./imagepacks/vanilla/* ./DoLP_goose_female_mysterious/img/
+          cp -r -f ./imagepacks/dolp/* ./DoLP_goose_female_mysterious/img/
+          cp -r -f ./imagepacks/goosefem/* ./DoLP_goose_female_mysterious/img/
+          cp -r -f ./imagepacks/goosefemsubs/* ./DoLP_goose_female_mysterious/img/
+          cp -r -f ./imagepacks/mysterious/* ./DoLP_goose_female_mysterious/img/
 
-          ZIP_NAME="../DoLP_Goose_female_mysterious_${VERSION}.zip"
-          zip -r -q "$ZIP_NAME" ./DoLP_Goose_female_mysterious/
+          ZIP_NAME="../DoLP_goose_female_mysterious_${VERSION}.zip"
+          zip -r -q "$ZIP_NAME" ./DoLP_goose_female_mysterious/
 
       # create artifacts
       - name: Upload Modloader artifact
@@ -305,62 +306,62 @@ jobs:
       - name: Upload BEEESSS artifact
         uses: actions/upload-artifact@v4
         with:
-          name: dolp-BEEESSS-package
+          name: dolp-beeesss-package
           path: DoLP_BEEESSS*.zip
 
       - name: Upload BEEESSS Hikari Female artifact
         uses: actions/upload-artifact@v4
         with:
-          name: dolp-BEEESSS-hikari-female-package
+          name: dolp-beeesss-hikari-female-package
           path: DoLP_BEEESSS_Hikari_Female*.zip
 
       - name: Upload BEEESSS Wax artifact
         uses: actions/upload-artifact@v4
         with:
-          name: dolp-BEEESSS-wax-package
+          name: dolp-beeesss-wax-package
           path: DoLP_BEEESSS_Wax*.zip
 
-      - name: Upload BEEESSS Mysterious artifact
+      - name: Upload beeesss_mysterious artifact
         uses: actions/upload-artifact@v4
         with:
-          name: dolp-BEEESSS-mysterious-package
-          path: DoLP_BEEESSS_mysterious*.zip
+          name: dolp-beeesss-mysterious-package
+          path: DoLP_beeesss_mysterious*.zip
 
-      - name: Upload Susato artifact         
+      - name: Upload Susato artifact
         uses: actions/upload-artifact@v4
         with:
           name: dolp-susato-package
-          path: DoLP_Susato*.zip
-        
+          path: DoLP_susato*.zip
+
       - name: Upload MIZZ Female artifact
         uses: actions/upload-artifact@v4
         with:
           name: dolp-mizz-female-package
           path: DoLP_MIZZ_Female*.zip
 
-      - name: Upload Kitmint artifact
+      - name: Upload kitmint artifact
         uses: actions/upload-artifact@v4
         with:
-          name: dolp-Kitmint-package
-          path: DoLP_Kitmint*.zip
+          name: dolp-kitmint-package
+          path: DoLP_kitmint*.zip
 
-      - name: Upload Hikfem Mysterious artifact
+      - name: Upload hikfem_mysterious artifact
         uses: actions/upload-artifact@v4
         with:
-          name: dolp-Hikfem-mysterious-package
-          path: DoLP_Hikfem_mysterious*.zip
+          name: dolp-hikfem-mysterious-package
+          path: DoLP_hikfem_mysterious*.zip
 
-      - name: Upload Goose Female artifact
+      - name: Upload goose_female artifact
         uses: actions/upload-artifact@v4
         with:
           name: dolp-goose-female-package
-          path: DoLP_Goose_female*.zip
+          path: DoLP_goose_female*.zip
 
-      - name: Upload Goose Female Mysterious artifact
+      - name: Upload goose_female_mysterious artifact
         uses: actions/upload-artifact@v4
         with:
           name: dolp-goose-female-mysterious-package
-          path: DoLP_Goose_female_mysterious*.zip
+          path: DoLP_goose_female_mysterious*.zip
 
   create-release:
     runs-on: ubuntu-latest
@@ -390,11 +391,11 @@ jobs:
             - BEEESSS Wax
             - Susato
             - MIZZ Female
-            - Kitmint
-            - BEEESSS_mysterious
-            - Hikfem_mysterious
-            - Goose_female
-            - Goose_female_mysterious
+            - kitmint
+            - beeesss_mysterious
+            - hikfem_mysterious
+            - goose_female
+            - goose_female_mysterious
           files: |
             DoLP_Modloader_*.zip
             DoLP_BEEESSS_*.zip
@@ -402,11 +403,11 @@ jobs:
             DoLP_BEEESSS_Wax_*.zip
             DoLP_Susato_*.zip
             DoLP_MIZZ_Female_*.zip
-            DoLP_Kitmint_*.zip
-            DoLP_BEEESSS_mysterious_*.zip
-            DoLP_Hikfem_mysterious_*.zip
-            DoLP_Goose_female_*.zip
-            DoLP_Goose_female_mysterious_*.zip
+            DoLP_kitmint_*.zip
+            DoLP_beeesss_mysterious_*.zip
+            DoLP_hikfem_mysterious_*.zip
+            DoLP_goose_female_*.zip
+            DoLP_goose_female_mysterious_*.zip
 
       - name: Cleanup
         run: |
