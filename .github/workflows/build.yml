@@ -64,8 +64,8 @@ jobs:
           unzip -oq modloader.zip -d ./modloader
           cp ./modloader/dist-insertTools/insert2html.js ./modloader/dist-insertTools/insert2html.cjs
           cp -f ./twine2/sugarcube-2/format.js degrees-of-lewdity-plus/devTools/tweego/storyFormats/sugarcube-2/
-          cat ./twine2/sugarcube-2/format.js
-          cat degrees-of-lewdity-plus/devTools/tweego/storyFormats/sugarcube-2/
+          ls ./twine2/sugarcube-2/
+          ls degrees-of-lewdity-plus/devTools/tweego/storyFormats/sugarcube-2/
 
       # compiles
       - name: Compile and package modloader
