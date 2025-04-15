@@ -66,25 +66,6 @@ jobs:
           cp -f ./twine2/sugarcube-2/format.js degrees-of-lewdity-plus/devTools/tweego/storyFormats/sugarcube-2/
 
       # compiles
-      - name: Compile and package modloader
-        run: |
-          cd degrees-of-lewdity-plus
-          VERSION=$(cat ./version)
-          mkdir -p DoLP_Modloader/img/
-          mkdir -p DoLP_Modloader/mod/
-
-          bash ./compile.sh
-          node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../modloader/dist-BeforeSC2/BeforeSC2.js"
-
-          cp "Degrees of Lewdity.html.mod.html" ./DoLP_Modloader/
-          cp "modList.json" ./DoLP_Modloader/
-          cp -r -f ./mod/* ./DoLP_Modloader/mod/
-          cp -r -f ./imagepacks/vanilla/* ./DoLP_Modloader/img/
-          cp -r -f ./imagepacks/dolp/* ./DoLP_Modloader/img/
-
-          ZIP_NAME="../DoLP_Modloader_${VERSION}.zip"
-          zip -r -q "$ZIP_NAME" ./DoLP_Modloader/
-
       - name: Compile and package BEEESSS variant
         run: |
           cd degrees-of-lewdity-plus
@@ -297,12 +278,6 @@ jobs:
           zip -r -q "$ZIP_NAME" ./DoLP_goose_female_mysterious/
 
       # create artifacts
-      - name: Upload Modloader artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: dolp-modloader-package
-          path: DoLP_Modloader*.zip
-
       - name: Upload BEEESSS artifact
         uses: actions/upload-artifact@v4
         with:
@@ -370,10 +345,6 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Download Modloader artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: dolp-modloader-package
       - name: Download BEEESSS artifact
         uses: actions/download-artifact@v4
         with:
@@ -434,7 +405,6 @@ jobs:
             - hikfem_mysterious
             - kitmint
             - MIZZ Female
-            - Modloader
             - Susato
           files: |
             DoLP_BEEESSS_v*.zip
@@ -446,7 +416,6 @@ jobs:
             DoLP_hikfem_mysterious_*.zip
             DoLP_kitmint_*.zip
             DoLP_MIZZ_Female_*.zip
-            DoLP_Modloader_*.zip
             DoLP_susato_*.zip
 
       - name: Cleanup
