@@ -148,7 +148,7 @@ jobs:
           cp -r -f ./imagepacks/b3s_wax/* ./DoLP_BEEESSS_Wax/img/
 
           ZIP_NAME="DoLP_BEEESSS_Wax_${VERSION}.zip"
-          zip -r "$ZIP_NAME" ./DoLP_BEEESSS_Wax/
+          zip -r -q "$ZIP_NAME" ./DoLP_BEEESSS_Wax/
 
       - name: Compile and package beeesss_mysterious
         run: |
@@ -170,7 +170,7 @@ jobs:
           cp -r -f ./imagepacks/mysterious/* ./DoLP_beeesss_mysterious/img/
 
           ZIP_NAME="DoLP_beeesss_mysterious_${VERSION}.zip"
-          zip -r "$ZIP_NAME" ./DoLP_beeesss_mysterious/
+          zip -r -q "$ZIP_NAME" ./DoLP_beeesss_mysterious/
 
       - name: Compile and package Susato
         run: |
@@ -189,7 +189,7 @@ jobs:
           cp -r -f ./imagepacks/susato/* ./DoLP_susato/img/
 
           ZIP_NAME="DoLP_susato_${VERSION}.zip"
-          zip -r "$ZIP_NAME" ./DoLP_susato/
+          zip -r -q "$ZIP_NAME" ./DoLP_susato/
 
       - name: Compile and package MIZZ Female
         run: |
@@ -211,7 +211,7 @@ jobs:
           cp -r -f ./imagepacks/mizz/* ./DoLP_MIZZ_Female/img/
 
           ZIP_NAME="DoLP_MIZZ_Female_${VERSION}.zip"
-          zip -r "$ZIP_NAME" ./DoLP_MIZZ_Female/
+          zip -r -q "$ZIP_NAME" ./DoLP_MIZZ_Female/
 
       - name: Compile and package kitmint
         run: |
@@ -231,7 +231,7 @@ jobs:
           cp -r -f ./imagepacks/kitmint/* ./DoLP_kitmint/img/
 
           ZIP_NAME="DoLP_kitmint_${VERSION}.zip"
-          zip -r "$ZIP_NAME" ./DoLP_kitmint/
+          zip -r -q "$ZIP_NAME" ./DoLP_kitmint/
 
       - name: Compile and package hikfem_mysterious
         run: |
@@ -255,7 +255,7 @@ jobs:
           cp -r -f ./imagepacks/mysterious/* ./DoLP_hikfem_mysterious/img/
 
           ZIP_NAME="DoLP_hikfem_mysterious_${VERSION}.zip"
-          zip -r "$ZIP_NAME" ./DoLP_hikfem_mysterious/
+          zip -r -q "$ZIP_NAME" ./DoLP_hikfem_mysterious/
 
       - name: Compile and package goose_female
         run: |
@@ -274,7 +274,7 @@ jobs:
           cp -r -f ./imagepacks/goosefemsubs/* ./DoLP_goose_female/img/
 
           ZIP_NAME="DoLP_goose_female_${VERSION}.zip"
-          zip -r "$ZIP_NAME" ./DoLP_goose_female/
+          zip -r -q "$ZIP_NAME" ./DoLP_goose_female/
 
       - name: Compile and package goose_female_mysterious
         run: |
@@ -295,74 +295,76 @@ jobs:
           cp -r -f ./imagepacks/mysterious/* ./DoLP_goose_female_mysterious/img/
 
           ZIP_NAME="DoLP_goose_female_mysterious_${VERSION}.zip"
-          zip -r "$ZIP_NAME" ./DoLP_goose_female_mysterious/
+          zip -r -q "$ZIP_NAME" ./DoLP_goose_female_mysterious/
+          cd ..
+          ls
 
       # create artifacts
       - name: Upload Modloader artifact
         uses: actions/upload-artifact@v4
         with:
           name: dolp-modloader-package
-          path: DoLP_Modloader_*.zip
+          path: DoLP_Modloader*.zip
 
       - name: Upload BEEESSS artifact
         uses: actions/upload-artifact@v4
         with:
           name: dolp-beeesss-package
-          path: DoLP_BEEESSS_v0.${{ github.run_number }}.zip
+          path: DoLP_BEEESSS*.zip
 
       - name: Upload BEEESSS Hikari Female artifact
         uses: actions/upload-artifact@v4
         with:
           name: dolp-beeesss-hikari-female-package
-          path: DoLP_BEEESSS_Hikari_Female_v0.${{ github.run_number }}.zip
+          path: DoLP_BEEESSS_Hikari_Female*.zip
 
       - name: Upload BEEESSS Wax artifact
         uses: actions/upload-artifact@v4
         with:
           name: dolp-beeesss-wax-package
-          path: DoLP_BEEESSS_Wax_v0.${{ github.run_number }}.zip
+          path: DoLP_BEEESSS_Wax*.zip
 
       - name: Upload beeesss_mysterious artifact
         uses: actions/upload-artifact@v4
         with:
           name: dolp-beeesss-mysterious-package
-          path: DoLP_beeesss_mysterious_v0.${{ github.run_number }}.zip
+          path: DoLP_beeesss_mysterious*.zip
 
       - name: Upload Susato artifact
         uses: actions/upload-artifact@v4
         with:
           name: dolp-susato-package
-          path: DoLP_Susato_v0.${{ github.run_number }}.zip
+          path: DoLP_Susato*.zip
 
       - name: Upload MIZZ Female artifact
         uses: actions/upload-artifact@v4
         with:
           name: dolp-mizz-female-package
-          path: DoLP_MIZZ_Female_v0.${{ github.run_number }}.zip
+          path: DoLP_MIZZ_Female*.zip
 
       - name: Upload kitmint artifact
         uses: actions/upload-artifact@v4
         with:
           name: dolp-kitmint-package
-          path: DoLP_kitmint_v0.${{ github.run_number }}.zip
+          path: DoLP_kitmint*.zip
 
       - name: Upload hikfem_mysterious artifact
         uses: actions/upload-artifact@v4
         with:
           name: dolp-hikfem-mysterious-package
-          path: DoLP_hikfem_mysterious_v0.${{ github.run_number }}.zip
+          path: DoLP_hikfem_mysterious*.zip
 
       - name: Upload goose_female artifact
         uses: actions/upload-artifact@v4
         with:
           name: dolp-goose-female-package
-          path: DoLP_goose_female_v0.${{ github.run_number }}.zip
+          path: DoLP_goose_female*.zip
 
       - name: Upload goose_female_mysterious artifact
         uses: actions/upload-artifact@v4
         with:
           name: dolp-goose-female-mysterious-package
-          path: DoLP_goose_female_mysterious_v0.${{ github.run_number }}.zip
+          path: DoLP_goose_female_mysterious*.zip
 
   create-release:
     runs-on: ubuntu-latest
