@@ -102,7 +102,7 @@ jobs:
           cp -r -f ./imagepacks/kaervek/* ./DoLP_BEEESSS/img/
           cp -r -f ./imagepacks/dolp_b3s/* ./DoLP_BEEESSS/img/
 
-          ZIP_NAME="../DoLP_BEEESSS_${VERSION}.zip"
+          ZIP_NAME="../DoLP_BEEESSS_v${VERSION}.zip"
           zip -r -q "$ZIP_NAME" ./DoLP_BEEESSS/
 
       - name: Compile and package BEEESSS Hikari Female
@@ -437,10 +437,10 @@ jobs:
             - Modloader
             - Susato
           files: |
-            DoLP_BEEESSS_*.zip
-            DoLP_BEEESSS_*.zip
-            DoLP_beeesss_mysterious_*.zip
+            DoLP_BEEESSS_v*.zip
+            DoLP_BEEESSS_Hikari_Female_*.zip
             DoLP_BEEESSS_Wax_*.zip
+            DoLP_beeesss_mysterious_*.zip
             DoLP_goose_female_*.zip
             DoLP_goose_female_mysterious_*.zip
             DoLP_hikfem_mysterious_*.zip
