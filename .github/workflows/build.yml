@@ -326,15 +326,12 @@ jobs:
           name: dolp-BEEESSS-mysterious-package
           path: DoLP_BEEESSS_mysterious*.zip
 
-      - name: Upload Susato artifact
+      - name: Upload Susato artifact         
         uses: actions/upload-artifact@v4
         with:
           name: dolp-susato-package
           path: DoLP_Susato*.zip
-        run: |
-          ls -la
-          ls -la ./degrees-of-lewdity-plus
-
+        
       - name: Upload MIZZ Female artifact
         uses: actions/upload-artifact@v4
         with:
