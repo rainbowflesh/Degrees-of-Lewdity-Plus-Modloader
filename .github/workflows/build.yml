@@ -2,9 +2,13 @@ name: Inject modloader and build DolP variants
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - "0.5.4.x-tempfix"
   pull_request:
-    branches: ["main"]
+    branches:
+      - "main" 
+    paths:
+      - ".github/workflows/build.yml"
 
 env:
   NODE_OPTIONS: "--max-old-space-size=4096"
