@@ -37,15 +37,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache-dependency-path: degrees-of-lewdity-plus
 
-      # - name: Build SugarCube v2
-      #   run: |
-      #     git clone --depth 1 https://github.com/Lyoko-Jeremie/sugarcube-2_Vrelnir sugarcube-2_Vrelnir
-      #     cd sugarcube-2_Vrelnir
-      #     npm i
-      #     node build.js -d -u -b 2
-      #     cd ..
-      # cp -f sugarcube-2_Vrelnir/dist/format.js degrees-of-lewdity-plus/devTools/tweego/storyFormats/sugarcube-2/
-
       - name: Download and inject modloader
         run: |
           REPO_OWNER="Lyoko-Jeremie"
@@ -73,7 +64,7 @@ jobs:
           mkdir -p DoLP_BEEESSS/img/
           mkdir -p DoLP_BEEESSS/mod/
           bash ./compile.sh
-          node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../modloader/dist-BeforeSC2/BeforeSC2.js"
+          node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../dist-BeforeSC2/BeforeSC2.js"
 
           cp "Degrees of Lewdity.html" ./DoLP_BEEESSS/
           cp "Degrees of Lewdity.html.mod.html" ./DoLP_BEEESSS/
