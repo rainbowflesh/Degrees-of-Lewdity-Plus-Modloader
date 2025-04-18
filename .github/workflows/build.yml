@@ -2,9 +2,13 @@ name: Inject modloader and build DolP variants
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - "0.5.4.x-tempfix"
   pull_request:
-    branches: ["main"]
+    branches:
+      - "main"
+    paths:
+      - ".github/workflows/build.yml"
 
 env:
   NODE_OPTIONS: "--max-old-space-size=4096"
@@ -37,15 +41,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache-dependency-path: degrees-of-lewdity-plus
 
-      # - name: Build SugarCube v2
-      #   run: |
-      #     git clone --depth 1 https://github.com/Lyoko-Jeremie/sugarcube-2_Vrelnir sugarcube-2_Vrelnir
-      #     cd sugarcube-2_Vrelnir
-      #     npm i
-      #     node build.js -d -u -b 2
-      #     cd ..
-      # cp -f sugarcube-2_Vrelnir/dist/format.js degrees-of-lewdity-plus/devTools/tweego/storyFormats/sugarcube-2/
-
       - name: Download and inject modloader
         run: |
           REPO_OWNER="Lyoko-Jeremie"
@@ -73,7 +68,7 @@ jobs:
           mkdir -p DoLP_BEEESSS/img/
           mkdir -p DoLP_BEEESSS/mod/
           bash ./compile.sh
-          node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../modloader/dist-BeforeSC2/BeforeSC2.js"
+          node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../dist-BeforeSC2/BeforeSC2.js"
 
           cp "Degrees of Lewdity.html" ./DoLP_BEEESSS/
           cp "Degrees of Lewdity.html.mod.html" ./DoLP_BEEESSS/
@@ -94,7 +89,7 @@ jobs:
           mkdir -p DoLP_BEEESSS_Hikari_Female/img/
           mkdir -p DoLP_BEEESSS_Hikari_Female/mod/
           bash ./compile.sh
-          node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../modloader/dist-BeforeSC2/BeforeSC2.js"
+          node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../dist-BeforeSC2/BeforeSC2.js"
 
           cp "Degrees of Lewdity.html" ./DoLP_BEEESSS_Hikari_Female/
           cp "Degrees of Lewdity.html.mod.html" ./DoLP_BEEESSS_Hikari_Female/
@@ -117,7 +112,7 @@ jobs:
           mkdir -p DoLP_BEEESSS_Wax/img/
           mkdir -p DoLP_BEEESSS_Wax/mod/
           bash ./compile.sh
-          node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../modloader/dist-BeforeSC2/BeforeSC2.js"
+          node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../dist-BeforeSC2/BeforeSC2.js"
 
           cp "Degrees of Lewdity.html" ./DoLP_BEEESSS_Wax/
           cp "Degrees of Lewdity.html.mod.html" ./DoLP_BEEESSS_Wax/
@@ -140,7 +135,7 @@ jobs:
           mkdir -p DoLP_beeesss_mysterious/mod/
           mkdir -p DoLP_beeesss_mysterious/img/
           bash ./compile.sh
-          node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../modloader/dist-BeforeSC2/BeforeSC2.js"
+          node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../dist-BeforeSC2/BeforeSC2.js"
 
           cp "Degrees of Lewdity.html" ./DoLP_beeesss_mysterious/
           cp "Degrees of Lewdity.html.mod.html" ./DoLP_beeesss_mysterious/
@@ -163,7 +158,7 @@ jobs:
           mkdir -p DoLP_susato/img/
           mkdir -p DoLP_susato/mod/
           bash ./compile.sh
-          node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../modloader/dist-BeforeSC2/BeforeSC2.js"
+          node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../dist-BeforeSC2/BeforeSC2.js"
 
           cp "Degrees of Lewdity.html" ./DoLP_susato/
           cp "Degrees of Lewdity.html.mod.html" ./DoLP_susato/
@@ -184,7 +179,7 @@ jobs:
           mkdir -p DoLP_MIZZ_Female/img/
           mkdir -p DoLP_MIZZ_Female/mod/
           bash ./compile.sh
-          node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../modloader/dist-BeforeSC2/BeforeSC2.js"
+          node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../dist-BeforeSC2/BeforeSC2.js"
 
           cp "Degrees of Lewdity.html" ./DoLP_MIZZ_Female/
           cp "Degrees of Lewdity.html.mod.html" ./DoLP_MIZZ_Female/
@@ -208,7 +203,7 @@ jobs:
           mkdir -p DoLP_kitmint/mod/
           cp ./imagepacks/kitmint/style.css ./
           bash ./compile.sh
-          node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../modloader/dist-BeforeSC2/BeforeSC2.js"
+          node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../dist-BeforeSC2/BeforeSC2.js"
 
           cp "Degrees of Lewdity.html" ./DoLP_kitmint/
           cp "Degrees of Lewdity.html.mod.html" ./DoLP_kitmint/
@@ -228,7 +223,7 @@ jobs:
           mkdir -p DoLP_hikfem_mysterious/img/
           mkdir -p DoLP_hikfem_mysterious/mod/
           bash ./compile.sh
-          node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../modloader/dist-BeforeSC2/BeforeSC2.js"
+          node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../dist-BeforeSC2/BeforeSC2.js"
 
           cp "Degrees of Lewdity.html" ./DoLP_hikfem_mysterious/
           cp "Degrees of Lewdity.html.mod.html" ./DoLP_hikfem_mysterious/
@@ -252,7 +247,7 @@ jobs:
           mkdir -p DoLP_goose_female/img/
           mkdir -p DoLP_goose_female/mod/
           bash ./compile.sh
-          node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../modloader/dist-BeforeSC2/BeforeSC2.js"
+          node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../dist-BeforeSC2/BeforeSC2.js"
 
           cp "Degrees of Lewdity.html" ./DoLP_goose_female/
           cp "Degrees of Lewdity.html.mod.html" ./DoLP_goose_female/
@@ -273,7 +268,7 @@ jobs:
           mkdir -p DoLP_goose_female_mysterious/img/
           mkdir -p DoLP_goose_female_mysterious/mod/
           bash ./compile.sh
-          node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../modloader/dist-BeforeSC2/BeforeSC2.js"
+          node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../dist-BeforeSC2/BeforeSC2.js"
 
           cp "Degrees of Lewdity.html" ./DoLP_goose_female_mysterious/
           cp "Degrees of Lewdity.html.mod.html" ./DoLP_goose_female_mysterious/
@@ -292,7 +287,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: dolp-beeesss-package
-          path: DoLP_BEEESSS*.zip
+          path: DoLP_BEEESSS_v*.zip
 
       - name: Upload BEEESSS Hikari Female artifact
         uses: actions/upload-artifact@v4
