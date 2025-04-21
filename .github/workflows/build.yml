@@ -284,8 +284,8 @@ jobs:
           VERSION=$(cat version)
           bash ./compile.sh
           node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../dist-BeforeSC2/BeforeSC2.js"
-          ZIP_NAME="../DoLP_Modloader-HTML-ONLY_${VERSION}.zip"
-          zip -r -q "$ZIP_NAME"
+          ZIP_NAME="DoLP_Modloader-HTML-ONLY_${VERSION}.zip"
+          zip -r -q "$ZIP_NAME" "Degrees of Lewdity.html.mod.html"
           
       # create artifacts
       - name: Upload BEEESSS artifact
