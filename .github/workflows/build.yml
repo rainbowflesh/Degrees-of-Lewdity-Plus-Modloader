@@ -353,7 +353,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: dolp-modloader-html-only
-          path: DoLP_Modloader-HTML-ONLY*.zip
+          path: DoLP_Modloader-HTML-ONLY_* DoLP version.zip
 
   create-release:
     runs-on: ubuntu-latest
