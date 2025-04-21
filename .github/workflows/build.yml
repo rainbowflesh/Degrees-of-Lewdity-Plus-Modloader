@@ -278,6 +278,15 @@ jobs:
           ZIP_NAME="../DoLP_goose_female_mysterious_${VERSION}.zip"
           zip -r -q "$ZIP_NAME" ./DoLP_goose_female_mysterious/
 
+      - name: Compile HTML only
+        run: |
+          cd degrees-of-lewdity-plus
+          VERSION=$(cat version)
+          bash ./compile.sh
+          node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../dist-BeforeSC2/BeforeSC2.js"
+          ZIP_NAME="../DoLP_Modloader-HTML-ONLY_${VERSION}.zip"
+          zip -r -q "$ZIP_NAME"
+          
       # create artifacts
       - name: Upload BEEESSS artifact
         uses: actions/upload-artifact@v4
@@ -339,6 +348,12 @@ jobs:
           name: dolp-goose-female-mysterious-package
           path: DoLP_goose_female_mysterious*.zip
 
+      - name: Upload HTML only
+        uses: actions/upload-artifact@v4
+        with:
+          name: dolp-modloader-html-only
+          path: DoLP_Modloader-HTML-ONLY_*.zip
+
   create-release:
     runs-on: ubuntu-latest
     needs: compilation
@@ -387,6 +402,11 @@ jobs:
         with:
           name: dolp-goose-female-mysterious-package
 
+      - name: Download dolp-modloader-html-only artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dolp-modloader-html-only
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         env:
@@ -407,6 +427,7 @@ jobs:
             - kitmint
             - MIZZ Female
             - Susato
+            - HTML Only
           files: |
             DoLP_BEEESSS_v*.zip
             DoLP_BEEESSS_Hikari_Female_*.zip
@@ -418,6 +439,7 @@ jobs:
             DoLP_kitmint_*.zip
             DoLP_MIZZ_Female_*.zip
             DoLP_susato_*.zip
+            DoLP_Modloader-HTML-ONLY_*.zip
 
       - name: Cleanup
         run: |
