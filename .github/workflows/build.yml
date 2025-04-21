@@ -284,7 +284,7 @@ jobs:
           VERSION=$(cat version)
           bash ./compile.sh
           node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../dist-BeforeSC2/BeforeSC2.js"
-          ZIP_NAME="DoLP_Modloader-HTML-ONLY_${VERSION}.zip"
+          ZIP_NAME="DoLP_Modloader-HTML-ONLY.zip"
           zip -r -q "$ZIP_NAME" "Degrees of Lewdity.html.mod.html"
           ls
           
@@ -353,7 +353,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: dolp-modloader-html-only
-          path: DoLP_Modloader-HTML-ONLY_* DoLP version.zip
+          path: DoLP_Modloader-HTML-ONLY.zip
 
   create-release:
     runs-on: ubuntu-latest
@@ -440,7 +440,7 @@ jobs:
             DoLP_kitmint_*.zip
             DoLP_MIZZ_Female_*.zip
             DoLP_susato_*.zip
-            DoLP_Modloader-HTML-ONLY_*.zip
+            DoLP_Modloader-HTML-ONLY.zip
 
       - name: Cleanup
         run: |
