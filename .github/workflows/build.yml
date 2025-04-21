@@ -286,6 +286,7 @@ jobs:
           node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../dist-BeforeSC2/BeforeSC2.js"
           ZIP_NAME="DoLP_Modloader-HTML-ONLY_${VERSION}.zip"
           zip -r -q "$ZIP_NAME" "Degrees of Lewdity.html.mod.html"
+          ls
           
       # create artifacts
       - name: Upload BEEESSS artifact
@@ -352,7 +353,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: dolp-modloader-html-only
-          path: DoLP_Modloader-HTML-ONLY_*.zip
+          path: DoLP_Modloader-HTML-ONLY*.zip
 
   create-release:
     runs-on: ubuntu-latest
