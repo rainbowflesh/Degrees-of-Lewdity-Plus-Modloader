@@ -30,6 +30,10 @@ jobs:
         run: |
           git clone --depth 1 https://gitgud.io/Frostberg/degrees-of-lewdity-plus.git degrees-of-lewdity-plus
 
+      - name: Get Dol source
+        run: |
+          git clone --depth 1 https://gitgud.io/Vrelnir/degrees-of-lewdity.git degrees-of-lewdity
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -57,6 +61,23 @@ jobs:
           cp -f ./twine2/sugarcube-2/format.js degrees-of-lewdity-plus/devTools/tweego/storyFormats/sugarcube-2/
 
       # compiles
+      - name: Compile and package vanilla
+        run: |
+          cd degrees-of-lewdity
+          VERSION=$(cat version)
+          mkdir -p DoL/img/
+          mkdir -p DoL/mod/
+          bash ./compile.sh
+          node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../dist-BeforeSC2/BeforeSC2.js"
+
+          cp "Degrees of Lewdity.html" ./DoL/
+          cp "Degrees of Lewdity.html.mod.html" ./DoL/
+          cp -r -f ./mod/* ./DoL/mod/
+          cp -r -f ./imagepacks/vanilla/* ./DoL/img/
+
+          ZIP_NAME="../DoL_v${VERSION}.zip"
+          zip -r -q "$ZIP_NAME" ./DoL/
+
       - name: Compile and package BEEESSS variant
         run: |
           cd degrees-of-lewdity-plus
@@ -278,6 +299,68 @@ jobs:
           ZIP_NAME="../DoLP_goose_female_mysterious_${VERSION}.zip"
           zip -r -q "$ZIP_NAME" ./DoLP_goose_female_mysterious/
 
+      - name: Compile and package goose_masc
+        run: |
+          cd degrees-of-lewdity-plus
+          VERSION=$(cat version)
+
+          mkdir -p DoLP_goose_masc/img/
+          mkdir -p DoLP_goose_masc/mod/
+          bash ./compile.sh
+          node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../dist-BeforeSC2/BeforeSC2.js"
+
+          cp "Degrees of Lewdity.html" ./DoLP_goose_masc/
+          cp "Degrees of Lewdity.html.mod.html" ./DoLP_goose_masc/
+          cp -r -f ./mod/* ./DoLP_goose_masc/mod/
+          cp -r -f ./imagepacks/vanilla/* ./DoLP_goose_masc/img/
+          cp -r -f ./imagepacks/dolp/* ./DoLP_goose_masc/img/
+          cp -r -f ./imagepacks/goosemasc/* ./DoLP_goose_masc/img/
+
+          ZIP_NAME="../DoLP_goose_masc_${VERSION}.zip"
+          zip -r -q "$ZIP_NAME" ./DoLP_goose_masc/
+
+      - name: Compile and package goose_andro
+        run: |
+          cd degrees-of-lewdity-plus
+          VERSION=$(cat version)
+
+          mkdir -p DoLP_goose_andro/img/
+          mkdir -p DoLP_goose_andro/mod/
+          bash ./compile.sh
+          node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../dist-BeforeSC2/BeforeSC2.js"
+
+          cp "Degrees of Lewdity.html" ./DoLP_goose_andro/
+          cp "Degrees of Lewdity.html.mod.html" ./DoLP_goose_andro/
+          cp -r -f ./mod/* ./DoLP_goose_andro/mod/
+          cp -r -f ./imagepacks/vanilla/* ./DoLP_goose_andro/img/
+          cp -r -f ./imagepacks/dolp/* ./DoLP_goose_andro/img/
+          cp -r -f ./imagepacks/goosefem/* ./DoLP_goose_andro/img/
+          cp -r -f ./imagepacks/goosefemsubs/* ./DoLP_goose_andro/img/
+          cp -r -f ./imagepacks/gooseandro/* ./DoLP_goose_andro/img/
+
+          ZIP_NAME="../DoLP_goose_andro_${VERSION}.zip"
+          zip -r -q "$ZIP_NAME" ./DoLP_goose_andro/
+
+      - name: Compile and package mikili
+        run: |
+          cd degrees-of-lewdity-plus
+          VERSION=$(cat version)
+
+          mkdir -p DoLP_mikili/img/
+          mkdir -p DoLP_mikili/mod/
+          bash ./compile.sh
+          node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../dist-BeforeSC2/BeforeSC2.js"
+
+          cp "Degrees of Lewdity.html" ./DoLP_mikili/
+          cp "Degrees of Lewdity.html.mod.html" ./DoLP_mikili/
+          cp -r -f ./imagepacks/vanilla/* ./DoLP_mikili/img/
+          cp -r -f ./imagepacks/dolp/* ./DoLP_mikili/img/
+          cp -r -f ./imagepacks/mikilisubs/* ./DoLP_mikili/img/
+          cp -r -f ./imagepacks/mysterious/* ./DoLP_mikili/img/
+
+          ZIP_NAME="../DoLP_mikili_${VERSION}.zip"
+          zip -r -q "$ZIP_NAME" ./DoLP_mikili/
+
       - name: Compile HTML only
         run: |
           cd degrees-of-lewdity-plus
@@ -287,8 +370,14 @@ jobs:
           ZIP_NAME="DoLP_Modloader-HTML-ONLY_${VERSION}.zip"
           zip -r -q "$ZIP_NAME" "Degrees of Lewdity.html.mod.html"
           ls
-          
+
       # create artifacts
+      - name: Upload vanilla artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dol-vanilla-package
+          path: DoL_v*.zip
+
       - name: Upload BEEESSS artifact
         uses: actions/upload-artifact@v4
         with:
@@ -349,6 +438,24 @@ jobs:
           name: dolp-goose-female-mysterious-package
           path: DoLP_goose_female_mysterious*.zip
 
+      - name: Upload goose_goose_masc artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dolp-goose-masc-package
+          path: DoLP_goose_masc*.zip
+
+      - name: Upload goose_andro artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dolp-goose-andro-package
+          path: DoLP_goose_andro*.zip
+
+      - name: Upload mikili artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dolp-mikili-package
+          path: DoLP_mikili*.zip
+
       - name: Upload HTML only
         uses: actions/upload-artifact@v4
         with:
@@ -362,6 +469,10 @@ jobs:
     permissions:
       contents: write
     steps:
+      - name: Download vanilla artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dol-vanilla-package
       - name: Download BEEESSS artifact
         uses: actions/download-artifact@v4
         with:
@@ -402,6 +513,27 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: dolp-goose-female-mysterious-package
+        uses: actions/download-artifact@v4
+        with:
+          name: dolp-goose-female-package
+      - name: Download goose_masc artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dolp-goose_masc-package
+        uses: actions/download-artifact@v4
+        with:
+          name: dolp-goose_masc-package
+      - name: Download goose_andro artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dolp-goose-andro-package
+        uses: actions/download-artifact@v4
+        with:
+          name: dolp-goose-andro-package
+      - name: Download mikili artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dolp-mikili-package
 
       - name: Download dolp-modloader-html-only artifact
         uses: actions/download-artifact@v4
@@ -414,28 +546,36 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
           tag_name: manual-release-${{ github.run_number }}
-          name: DoLP Release ${{ github.run_number }}
+          name: Release ${{ github.run_number }}
           body: |
             Auto-release for commit ${{ github.sha }}
             Includes:
+            - Vanilla
             - BEEESSS
             - BEEESSS Hikari Female
             - BEEESSS Wax
             - beeesss_mysterious
             - goose_female
             - goose_female_mysterious
+            - goose_masc
+            - goose_andro
+            - mikili
             - hikfem_mysterious
             - kitmint
             - MIZZ Female
             - Susato
             - HTML Only
           files: |
+            DoL_v*.zip
             DoLP_BEEESSS_v*.zip
             DoLP_BEEESSS_Hikari_Female_*.zip
             DoLP_BEEESSS_Wax_*.zip
             DoLP_beeesss_mysterious_*.zip
             DoLP_goose_female_v*.zip
             DoLP_goose_female_mysterious_*.zip
+            DoLP_goose_masc_*.zip
+            DoLP_goose_andro_*.zip
+            DoLP_mikili_*.zip
             DoLP_hikfem_mysterious_*.zip
             DoLP_kitmint_*.zip
             DoLP_MIZZ_Female_*.zip
