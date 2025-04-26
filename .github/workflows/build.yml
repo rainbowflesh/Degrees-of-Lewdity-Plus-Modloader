@@ -473,63 +473,67 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: dol-vanilla-package
+
       - name: Download BEEESSS artifact
         uses: actions/download-artifact@v4
         with:
           name: dolp-beeesss-package
+
       - name: Download BEEESSS Hikari Female artifact
         uses: actions/download-artifact@v4
         with:
           name: dolp-beeesss-hikari-female-package
+
       - name: Download BEEESSS Wax artifact
         uses: actions/download-artifact@v4
         with:
           name: dolp-beeesss-wax-package
+
       - name: Download beeesss_mysterious artifact
         uses: actions/download-artifact@v4
         with:
           name: dolp-beeesss-mysterious-package
+
       - name: Download Susato artifact
         uses: actions/download-artifact@v4
         with:
           name: dolp-susato-package
+
       - name: Download MIZZ Female artifact
         uses: actions/download-artifact@v4
         with:
           name: dolp-mizz-female-package
+
       - name: Download kitmint artifact
         uses: actions/download-artifact@v4
         with:
           name: dolp-kitmint-package
+
       - name: Download hikfem_mysterious artifact
         uses: actions/download-artifact@v4
         with:
           name: dolp-hikfem-mysterious-package
+
       - name: Download goose_female artifact
         uses: actions/download-artifact@v4
         with:
           name: dolp-goose-female-package
+
       - name: Download goose_female_mysterious artifact
         uses: actions/download-artifact@v4
         with:
           name: dolp-goose-female-mysterious-package
-        uses: actions/download-artifact@v4
-        with:
-          name: dolp-goose-female-package
+
       - name: Download goose_masc artifact
         uses: actions/download-artifact@v4
         with:
           name: dolp-goose_masc-package
-        uses: actions/download-artifact@v4
-        with:
-          name: dolp-goose_masc-package
+
       - name: Download goose_andro artifact
         uses: actions/download-artifact@v4
         with:
           name: dolp-goose-andro-package
-        uses: actions/download-artifact@v4
-        with:
-          name: dolp-goose-andro-package
+
       - name: Download mikili artifact
         uses: actions/download-artifact@v4
         with:
