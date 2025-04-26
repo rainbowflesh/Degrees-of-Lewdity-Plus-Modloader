@@ -527,7 +527,7 @@ jobs:
       - name: Download goose_masc artifact
         uses: actions/download-artifact@v4
         with:
-          name: dolp-goose_masc-package
+          name: dolp-goose-masc-package
 
       - name: Download goose_andro artifact
         uses: actions/download-artifact@v4
