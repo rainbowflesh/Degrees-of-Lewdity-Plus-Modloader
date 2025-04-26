@@ -61,22 +61,22 @@ jobs:
           cp -f ./twine2/sugarcube-2/format.js degrees-of-lewdity-plus/devTools/tweego/storyFormats/sugarcube-2/
 
       # compiles
-      - name: Compile and package vanilla
-        run: |
-          cd degrees-of-lewdity
-          VERSION=$(cat version)
-          mkdir -p DoL/img/
-          mkdir -p DoL/mod/
-          bash ./compile.sh
-          node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../dist-BeforeSC2/BeforeSC2.js"
+      # - name: Compile and package vanilla
+      #   run: |
+      #     cd degrees-of-lewdity
+      #     VERSION=$(cat version)
+      #     mkdir -p DoL/img/
+      #     mkdir -p DoL/mod/
+      #     bash ./compile.sh
+      #     node "../modloader/dist-insertTools/insert2html.cjs" "./Degrees of Lewdity.html" "../modloader/modList.json" "../dist-BeforeSC2/BeforeSC2.js"
 
-          cp "Degrees of Lewdity.html" ./DoL/
-          cp "Degrees of Lewdity.html.mod.html" ./DoL/
-          cp -r -f ./mod/* ./DoL/mod/
-          cp -r -f ./imagepacks/vanilla/* ./DoL/img/
+      #     cp "Degrees of Lewdity.html" ./DoL/
+      #     cp "Degrees of Lewdity.html.mod.html" ./DoL/
+      #     cp -r -f ./mod/* ./DoL/mod/
+      #     cp -r -f ./imagepacks/vanilla/* ./DoL/img/
 
-          ZIP_NAME="../DoL_v${VERSION}.zip"
-          zip -r -q "$ZIP_NAME" ./DoL/
+      #     ZIP_NAME="../DoL_v${VERSION}.zip"
+      #     zip -r -q "$ZIP_NAME" ./DoL/
 
       - name: Compile and package BEEESSS variant
         run: |
@@ -372,11 +372,11 @@ jobs:
           ls
 
       # create artifacts
-      - name: Upload vanilla artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: dol-vanilla-package
-          path: DoL_v*.zip
+      # - name: Upload vanilla artifact
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: dol-vanilla-package
+      #     path: DoL_v*.zip
 
       - name: Upload BEEESSS artifact
         uses: actions/upload-artifact@v4
@@ -469,10 +469,10 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Download vanilla artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: dol-vanilla-package
+      # - name: Download vanilla artifact
+      #   uses: actions/download-artifact@v4
+      #   with:
+      #     name: dol-vanilla-package
 
       - name: Download BEEESSS artifact
         uses: actions/download-artifact@v4
@@ -554,7 +554,6 @@ jobs:
           body: |
             Auto-release for commit ${{ github.sha }}
             Includes:
-            - Vanilla
             - BEEESSS
             - BEEESSS Hikari Female
             - BEEESSS Wax
@@ -570,7 +569,6 @@ jobs:
             - Susato
             - HTML Only
           files: |
-            DoL_v*.zip
             DoLP_BEEESSS_v*.zip
             DoLP_BEEESSS_Hikari_Female_*.zip
             DoLP_BEEESSS_Wax_*.zip
